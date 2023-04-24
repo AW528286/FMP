@@ -7,7 +7,7 @@ public class PlayerMotor : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool isGrounded;
-    public float speed = 5f;
+    public float speed = 4f;
     public float gravity = -9.8f;
     public float jumpHeight = 3f;
     bool crouching = false;
@@ -48,15 +48,20 @@ public class PlayerMotor : MonoBehaviour
         crouching = !crouching;
         crouchTimer = 0;
         lerpCrouch = true;
+        if (crouching)
+            speed = 2;
+        else
+            speed = 4;
+
     }
 
     public void Sprint()
     {
         sprinting = !sprinting;
         if (sprinting)
-            speed = 8;
+            speed = 4;
         else 
-            speed = 5;
+            speed = 4;
     }
     public void ProcessMove(Vector2 input) 
     {
